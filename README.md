@@ -14,6 +14,79 @@ Lesearch is a web application designed to enhance the readability and accessibil
 - **AI Integration**: Chat with AI assistants using Google Gemini and Azure OpenAI
 - **Paper Management**: Upload, organize, and explore research papers
 - **Drag and Drop**: Intuitive drag-and-drop interface for sidebar items and paper organization
+- **LeCodeR**: AI-powered research paper code reproduction system (NEW!)
+
+## LeCodeR - Research Code Reproducer
+
+**LeCodeR** is our newest feature that automates the reproduction of research papers with publicly available code. It reduces the time from paper to working code from 8+ hours to less than 1 hour.
+
+### Key Features
+
+- 🔬 **Automated Paper Analysis**: Extracts methodology, architecture, and dependencies
+- 💻 **Code Generation**: Creates reproduction code with setup instructions
+- ✅ **Validation**: Checks generated code for errors and conflicts
+- 📦 **One-Click Download**: Get complete package as ZIP file
+- 🤖 **Agent.md Generation**: Special files for AI coding assistants (Claude Code, Cursor)
+- ⚡ **Fast Processing**: 30-60 minutes average completion time
+
+### How It Works
+
+1. **Upload**: Provide paper PDF or arXiv link + GitHub repository URL
+2. **Analyze**: AI extracts methodology and key components (5-10 min)
+3. **Generate**: Creates reproduction code and Agent.md (10-20 min)
+4. **Validate**: Checks code quality and dependencies (10-20 min)
+5. **Package**: Creates downloadable ZIP with 7-day access (5 min)
+
+### Getting Started with LeCodeR
+
+1. Navigate to `/lecoder` in the application
+2. Click "Start New Reproduction"
+3. Fill in paper and repository details
+4. Wait for processing (30-60 minutes)
+5. Download your reproduction package
+
+### Backend Setup
+
+LeCodeR requires a separate Python backend. See [`python-backend/README.md`](./python-backend/README.md) for setup instructions.
+
+**Quick Start:**
+
+```bash
+cd python-backend
+python -m venv venv
+source venv/bin/activate
+pip install -r requirements.txt
+pip install git+https://github.com/jmiao24/Paper2Agent.git
+python main.py
+```
+
+### Environment Variables
+
+Add to your `.env.local`:
+
+```bash
+PYTHON_BACKEND_URL=http://localhost:8000
+```
+
+### API Endpoints
+
+- `POST /api/lecoder/create` - Create new reproduction job
+- `GET /api/lecoder/status/:jobId` - Get job status
+- `GET /api/lecoder/download/:jobId` - Download result
+
+### Documentation
+
+- [LeCodeR Architecture](../Obsidian/LeSearch AI/LeCodeR-Architecture.md)
+- [Setup Guide](../Obsidian/LeSearch AI/LeCodeR-Setup-Guide.md)
+- [Technical Spec](../Obsidian/Daily Work/Oct 11, 2025- work/LECODER_TECHNICAL_SPEC.md)
+
+### Tech Stack
+
+- **Frontend**: Next.js 15, React 19, TailwindCSS
+- **Backend**: Python 3.11+, FastAPI, Paper2Agent
+- **AI Models**: Claude Sonnet 4.5, Google Gemini 1.5 Pro
+- **Database**: Supabase PostgreSQL
+- **Storage**: Supabase Storage
 
 ## Getting Started
 
